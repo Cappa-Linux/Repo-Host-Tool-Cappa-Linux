@@ -1,0 +1,25 @@
+# Maintainer: Gia Phu <crystalforceix@gmail.com>
+pkgname="enchance-audio-tool"
+pkgver="0.3"
+pkgrel="2"
+pkgdesc="Enchance audio for linux who want good experience in music"
+arch=("x86_64")
+depends=(
+    "pipewire"
+    "pipewire-alsa"
+    "pipewire-pulse"
+    "wireplumber"
+    "gst-plugin-pipewire"
+    "easyeffects"
+    "calf"
+    "lsp-plugins"
+    "zam-plugins-lv2"
+    "mda.lv2"
+    "yelp"
+)
+url="https://github.com/crystalforceix/Repo-Host-Tool-Cappa-Linux"
+package() {
+  mkdir -p "${pkgdir}/usr/"
+  cp -r "${srcdir}/usr/bin" "${pkgdir}/usr/"
+}
+

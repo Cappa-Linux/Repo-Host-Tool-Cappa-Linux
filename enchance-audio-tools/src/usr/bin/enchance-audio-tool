@@ -1,0 +1,35 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]]; then
+  echo "Hey this is a enchance audio tool that will improve your music experience!."
+  echo "You can test it if you want. Pls use there flag below to toggle."
+  echo "For examples:"
+  echo "enchance-color-screen-tool [--off|--on|--loud|--movie]"
+  echo -e "--off: turn off enchance-audio-tool\n--on: turn on enchance-audio-tool\n--loud: loud audio mode\n--movie: movie audio mode "
+  exit 1
+fi
+
+case "$1" in
+  --off)
+    echo "Turn Off Enchance Audio tool."
+    easyeffects -q && pkill easyeffects
+    ;;
+  --on)
+    echo "Turn On Enchance Audio Tool."
+    echo "If you got bug that can't cancel it pls close the terminal then turn off again."
+    easyeffects --gapplication-service & disown
+    ;;
+  --loud)
+    echo "Loud Effect Audio Mode Is Enabled!"
+    easyeffects -l LoudEnchanceEffect
+    ;;
+  --movie)
+    echo "Movie Effect Audio Mode Is Enabled!"
+    easyeffects -l MovieEffect
+    ;;
+  *)
+    echo "Wrong flag: $1"
+    echo "enchance-color-audio-tool [--off|--on|--loud|--movie]"
+    exit 1
+    ;;
+esac
