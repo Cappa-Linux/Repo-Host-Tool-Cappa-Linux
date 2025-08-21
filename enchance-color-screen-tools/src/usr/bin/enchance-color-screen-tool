@@ -1,0 +1,34 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]]; then
+  echo "Hey this is a enchance color tool for TN screens help improve your poor color on TN screen."
+  echo "You can test it if you want. Pls use there flag below to toggle."
+  echo "For examples:"
+  echo "enchance-color-screen-tool [--off|--low|--high|--nightmode]"
+  echo -e "--off: off contrast color and nightmode\n--low: low contrast\n--high: high contrast color\n--nightmode: makes your eyes comfortable when displaying at night"
+  exit 1
+fi
+
+case "$1" in
+  --off)
+    echo "Off Enchance Color Screen tool."
+    xrandr --output eDP --gamma 1:1:1 && vibrant-cli eDP 1.0
+    ;;
+  --low)
+    echo "Low Contrast Color Is Enabled!"
+    xrandr --output eDP --gamma 1.05:0.95:0.9 && vibrant-cli eDP 1.33
+    ;;
+  --high)
+    echo "High Contrast Color Is Enabled!"
+    xrandr --output eDP --gamma 1.1:0.9:0.8 && vibrant-cli eDP 1.5
+    ;;
+  --nightmode)
+    echo "Nightmode Mode Is Enabled!"
+    xrandr --output eDP --gamma 1.0:0.83:0.65 && vibrant-cli eDP 1.0
+    ;;
+  *)
+    echo "Wrong flag: $1"
+    echo "enchance-color-screen-tool [--off|--low|--high|--nightmode]"
+    exit 1
+    ;;
+esac

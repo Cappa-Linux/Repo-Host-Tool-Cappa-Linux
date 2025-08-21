@@ -1,0 +1,12 @@
+pkgname="enchance-color-screen-tool"
+pkgver="0.3"
+pkgrel="2"
+pkgdesc="Really helpful for TN screen that have poor color."
+arch=("x86_64")
+depends=("xorg-xrandr" "vibrant-cli")
+url="https://github.com/crystalforceix/Repo-Host-Tool-Cappa-Linux"
+package() {
+  mkdir -p "${pkgdir}/usr/"
+  cp -r "${srcdir}/usr/bin" "${pkgdir}/usr/"
+}
+
