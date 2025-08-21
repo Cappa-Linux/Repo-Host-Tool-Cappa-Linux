@@ -1,0 +1,15 @@
+# Maintainer: Gia Phu <crystalforceix@gmail.com>
+pkgname="cappalinux-polkit-gnome"
+pkgver="0.3"
+pkgrel="2"
+pkgdesc="polkit-gnome for calla wm"
+arch=("x86_64")
+depends=(
+    "polkit-gnome"
+)
+url="https://github.com/crystalforceix/Repo-Host-Tool-Cappa-Linux"
+package() {
+  mkdir -p "${pkgdir}/usr/"
+  cp -r "${srcdir}/usr/bin" "${pkgdir}/usr/"
+}
+
