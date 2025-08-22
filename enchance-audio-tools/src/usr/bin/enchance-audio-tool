@@ -4,7 +4,7 @@ if [[ $# -eq 0 ]]; then
   echo "Hey this is a enchance audio tool that will improve your music experience!."
   echo "You can test it if you want. Pls use there flag below to toggle."
   echo "For examples:"
-  echo "enchance-color-screen-tool [--off|--on|--loud|--movie]"
+  echo "enchance-audio-tool [--off|--on|--loud|--movie]"
   echo -e "--off: turn off enchance-audio-tool\n--on: turn on enchance-audio-tool\n--loud: loud audio mode\n--movie: movie audio mode "
   exit 1
 fi
@@ -29,7 +29,7 @@ case "$1" in
     ;;
   *)
     echo "Wrong flag: $1"
-    echo "enchance-color-audio-tool [--off|--on|--loud|--movie]"
+    echo "enchance-audio-tool [--off|--on|--loud|--movie]"
     exit 1
     ;;
 esac
