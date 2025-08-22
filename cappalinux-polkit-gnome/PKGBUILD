@@ -7,7 +7,7 @@ arch=("x86_64")
 depends=(
     "polkit-gnome"
 )
-url="https://github.com/crystalforceix/Repo-Host-Tool-Cappa-Linux"
+url="https://github.com/Cappa-Linux/Repo-Host-Tool-Cappa-Linux"
 package() {
   mkdir -p "${pkgdir}/usr/"
   cp -r "${srcdir}/usr/bin" "${pkgdir}/usr/"
