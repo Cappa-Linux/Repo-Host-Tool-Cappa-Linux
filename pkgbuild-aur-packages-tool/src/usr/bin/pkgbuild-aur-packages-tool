@@ -1,0 +1,45 @@
+#!/bin/bash
+
+case "$1" in
+    --install)
+        if [[ -n "$2" ]]; then
+            pkg="$2"
+            echo "Installing package: $pkg"
+            cd /tmp/ && git clone --branch "$pkg" --single-branch https://github.com/archlinux/aur.git "$pkg" && cd /tmp/$pkg/ && makepkg -si
+	    sleep 0.5 && echo "The $pkg has been installed heheh:D"
+        else
+		echo "Hm you forgot write package you want?. Here is some hint maybe help you:)"
+		echo "Usage: $0 --install <package> for installing AUR packages"
+        	echo "Usage: $0 --pkgbuild <packages> for clone PKGBUILD of packages you want"
+        	echo "Note: If the PKGBUILD of package contain any AUR packages at dependancy then when makepkg -si will going fail."
+        	echo "This tool only need when web hosting AUR packages is down btw."
+        	echo "Maybe be the better way is using other AUR helper like yay or paru,..."
+            exit 1
+        fi
+        ;;
+    --pkgbuild)
+        if [[ -n "$2" ]]; then
+            pkg="$2"
+            echo "Getting PKGBUILD for: $pkg"
+            cd /tmp/ && git clone --branch "$pkg" --single-branch https://github.com/archlinux/aur.git "$pkg"
+	    echo "Here is where $pkg PKGBUILD stand:"
+	    cd /tmp/$pkg/ && pwd
+        else
+		echo "Hm you forgot write package you want?. Here is some hint maybe help you:)"
+                echo "Usage: $0 --install <package> for installing AUR packages"
+        	echo "Usage: $0 --pkgbuild <packages> for clone PKGBUILD of packages you want"
+        	echo "Note: If the PKGBUILD of package contain any AUR packages at dependancy then when makepkg -si will going fail."
+        	echo "This tool only need when web hosting AUR packages is down btw."
+        	echo "Maybe be the better way is using other AUR helper like yay or paru,..."
+            exit 1
+        fi
+        ;;
+    *)
+    	echo "Usage: $0 --install <package> for installing AUR packages"
+    	echo "Usage: $0 --pkgbuild <packages> for clone PKGBUILD of packages you want"
+    	echo "Note: If the PKGBUILD of package contain any AUR packages at dependancy then when makepkg -si will going fail."
+    	echo "This tool only need when web hosting AUR packages is down btw."
+    	echo "Maybe be the better way is using other AUR helper like yay or paru,..."
+        exit 1
+        ;;
+esac

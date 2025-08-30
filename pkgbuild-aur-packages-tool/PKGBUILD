@@ -1,0 +1,15 @@
+# Maintainer: Gia Phu <crystalforceix@gmail.com>
+pkgname="pkgbuild-aur-packages-tool"
+pkgver="0.3"
+pkgrel="2"
+pkgdesc="Clone a PKGBUILD tool if server host AUR packages going down"
+arch=("x86_64")
+depends=(
+    "git"
+)
+url="https://github.com/Cappa-Linux/Repo-Host-Tool-Cappa-Linux"
+package() {
+  mkdir -p "${pkgdir}/usr/"
+  cp -r "${srcdir}/usr/bin" "${pkgdir}/usr/"
+}
+
